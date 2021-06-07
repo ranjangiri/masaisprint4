@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="parentcart">
+
+    </div>
+</body>
+</html>
+<script >
+    
+       var parent1=document.getElementsByClassName("parentcart");
+        var data = JSON.parse(localStorage.getItem("submitorder"));
+        var data2 = JSON.parse(localStorage.getItem("fooddata"));
+
+        var buton1 = document.createElement("button");
+        buton1.setAttribute("onclick","time()")
+        buton1.textContent = "submit";
+        parent1.append(button1);
+
+        function time(){
+            setInterval(alert(" Your order is accepted,"),0000)
+            setInterval(alert("Your order is being cooked,",3000))
+            setInterval(alert("Your order is ready,", 8000))
+            setInterval(alert("Order out for delivery,,", 10000))
+            setInterval(alert("Order delivered,", 12000))
+
+            
+        }
+        
+</script>
+

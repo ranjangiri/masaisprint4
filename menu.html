@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        .image{
+            width: 5%;
+            height: 100px;
+        }
+        .box{
+            float:left;
+            margin:10px;
+            width:30%;
+            border: 1px solid black;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="parent">
+
+    </div>
+</body>
+</html>
+<script>
+    var foddata=localStorage.getItem("fooddata");
+    if(!foddata){
+    var dishesh=[{
+        image:"",
+        price:100,
+        descrip:"best food",
+        timetoprepare:"10 minute"
+    }, 
+    {image: "",
+        price: 99,
+        descrip: "best food",
+        timetoprepare: "10 minute"
+    },
+    {
+            image: "",
+            price: 98,
+            descrip: "best food",
+            timetoprepare: "10 minute"
+        },
+        {
+            image: "",
+            price: 97,
+            descrip: "best food",
+            timetoprepare: "10 minute"
+        },
+        {
+            image: "",
+            price: 96,
+            descrip: "best food",
+            timetoprepare: "10 minute"
+        }]
+        localStorage.setItem("fooddata",JSON.stringify(dishesh));
+    }
+
+
+function putdata(){
+    var lfd=JSON.parse(localStorage.getItem("fooddata"));
+    var parent = document.getElementsByClassName("parent")[0];
+    console.log(lfd[0].price);
+    for(i in lfd){
+        
+        var div=document.createElement("div");
+        div.setAttribute("class","box")
+        var img=document.createElement("img");
+        img.setAttribute("class","image");
+        img.alt="image"
+        var h1=document.createElement("h1");
+        h1.innerHTML="price:"+lfd[i].price;
+        var p=document.createElement("p");
+        p.innerHTML="des:"+lfd[i].descrip;
+        var h4=document.createElement("h4");
+        h4.innerHTML="time to prepare"+lfd[i].timetoprepare+"Minute";
+        var button1=document.createElement("button");
+        button1.value=i;
+        button1.textContent="Add to cart";
+        button1.setAttribute("onclick","addToCart(this.value)")
+        div.append(img,h1,p,h4,button1);
+        parent.append(div);
+
+
+
+
+    }
+}
+putdata()
+
+
+</script>

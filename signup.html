@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        .box{
+            margin: auto;
+            width: 30%;
+            border: 1px solid black;
+            background-color: khaki;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="box">
+        Enter your name:<input class="details" type="text"><br>
+        Email id:<input class="details" type="email"><br>
+        Password:<input class="details" type="password"><br>
+        <button onclick="signup()">signup</button>
+    </div>
+</body>
+</html>
+<script>
+    function signup(){
+        var data=document.getElementsByClassName("details");
+        var name = data[0].value;
+        var Email = data[1].value;
+        var password = data[2].value;
+        console.log(Email.length);
+        if(name.length==0){
+            alert("enter correct details");
+        }
+        if(password.length==0){
+            alert("enter correct details");
+        }
+        if(Email.length==0){
+            alert("enter correct details");
+        }
+        else{
+
+        var details={
+            name,
+            Email,
+            password,
+        }
+        console.log(name, Email, password);
+        
+
+        var signupdata=JSON.parse(localStorage.getItem("sdata"));
+        var flag=true
+        if(signupdata){
+            for(i in signupdata){
+                if(signupdata[i].Email==Email){
+                    alert("data already exist");
+                    flag=false;
+                }
+            }
+            if(flag){
+            signupdata.push(details);
+            localStorage.setItem("sdata",JSON.stringify(signupdata));
+            window.open("\menu.html")
+            }
+            
+        }
+        else{
+            var arr=[];
+            arr.push(details);
+            localStorage.setItem("sdata",JSON.stringify(arr));
+            window.open("\menu.html")
+
+        }
+    }
+        
+
+    }
+</script>
